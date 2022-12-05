@@ -1,0 +1,373 @@
+$primary_bg: #1D1E24;
+$secondary_bg: #20232B;
+$tertiary_bg: #B785F5;
+$tertiary_scnd_bg: #16171B;
+
+$primary_ft: #fff;
+$secondary_ft: rgba(255, 255, 255, 0.527);
+
+$primary_ht: #F3FC8A;
+$secondary_ht: #5852D6;
+$tertiary_ht: #000;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito';
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+html, input, button {
+    font-size: 15px;
+}
+
+input {
+    color: $secondary_ft;
+    border: 1px solid $primary_bg;
+    outline: none;
+
+    &:focus {
+        border-color: $secondary_ft !important;
+    }
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: $primary_bg;
+
+    .login-container__content {
+        background-color: $secondary_bg;
+        padding: 2rem;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 30rem;
+
+        .login-container__title {
+            color: $primary_ft;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-container__description {
+            color: $secondary_ft;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        input {
+            height: 3.5rem;
+            background: none;
+            width: 100%;
+            padding: 0 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 1.5rem;
+        }
+
+        button {
+            width: 100%;
+            background-color: $tertiary_bg;
+            height: 4rem;
+            border-radius: 1.5rem;
+            color: $primary_ft;
+            margin-top: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                height: 2.5rem;
+            }
+        }
+    }
+}
+
+.chat-container {
+    background-color: $secondary_bg;
+
+    // ------------- SHARE __ ELEMENTS -------------
+
+    .avatar {
+        height: 3rem;
+        width: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $tertiary_bg;
+        border-radius: 50%;
+    }
+    
+    .description {
+        
+        .description__name {
+            color: $primary_ft;
+            margin-bottom: .2rem;
+        }
+
+        .description__email {
+            color: $secondary_ft;
+            font-size: .9rem;
+            font-weight: 300;
+        }
+    }
+
+    button {
+        background-color: rgba(255, 255, 255, 0.16);
+        border-radius: 1.5rem;
+        height: 3rem;
+        width: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    // ------------- END __ SHARE __ ELEMENTS -------------
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid $tertiary_ht;
+        padding-right: 2rem;
+
+        nav {
+            display: flex;
+            align-items: center;
+
+            p {
+                color: $secondary_ft;
+                position: relative;
+                padding: 2rem;
+    
+                svg {
+                    margin-right: 5px;
+                }
+    
+                &.--active {
+                    color: $primary_ht;
+    
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 5px;
+                        width: 100%;
+                        background-color: $primary_ht;
+                        border-radius: 0 0 3px 3px;
+                    }
+                }
+            }
+        }
+
+        .header__right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            .header__description {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+        }
+    }
+
+    .chat-container__content {
+        display: flex;
+
+        .chat-container__menu {
+            background-color: $tertiary_ht;
+            padding: 1.5rem;
+            height: calc(100vh - 82px);
+
+            ul {
+                list-style: none;
+
+                li {
+                    color: $secondary_ft;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    min-width: 12rem;
+                    height: 3.5rem;
+                    padding: 1.5rem 1.5rem;
+                    border-radius: 1.5rem;
+
+                    &.--active {
+                        background-color: $primary_ht;
+                        color: $tertiary_ht;
+                    }
+                }
+            }
+        }
+
+        .messages-container {
+            display: flex;
+            flex: 1;
+            
+            .messages-container__list {
+                padding: 1.5rem;
+                min-width: 20rem;
+
+                input {
+                    background-color: $tertiary_scnd_bg;
+                    height: 3.5rem;
+                    padding: 0 1.5rem;
+                    color: $secondary_ft;
+                    width: 100%;
+                    border-radius: 1.5rem;
+                }
+
+                ul {
+                    margin-top: 2rem;
+                    list-style: none;
+
+                    li {
+                        display: flex;
+                        column-gap: 1.5rem;
+                        cursor: pointer;
+                        padding: 1.5rem;
+                        border-radius: 1.5rem;
+
+                        .description__msg {
+                            margin-top: .8rem;
+                            color: $secondary_ft;
+                        }
+
+                        .item-time {
+                            color: $primary_ft;
+                            font-size: .8rem;
+                            font-weight: 300;
+                        }
+
+                        &:hover {
+                            background-color: $primary_bg;
+                        }
+
+                        &.--active {
+                            background: $tertiary_scnd_bg;
+                        }
+                    }
+                }
+            }
+
+            .conversation-container {
+                background-color: $primary_bg;
+                border-radius: 1.5rem 1.5rem 0 0;
+                margin-top: 1.5rem;
+                flex: 1;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+
+                .conversation-container__top {
+                    background-color: $tertiary_ht;
+                    display: flex;
+                    align-items: center;
+                    padding: 1.5rem 1.5rem;
+
+                    .conversation-container__avavar {
+                        height: 2rem;
+                        width: 2rem;
+                        font-size: .7rem;
+                    }
+
+                    .conversation-container__name {
+                        color: $secondary_ft;
+                        margin-left: 1.5rem;
+
+                        span {
+                            color: $primary_ft;
+                        }
+                    }
+                }
+
+                .conversation-container__content {
+                    flex: 1;
+                }
+
+                .conversation-container__keyboard {
+                    position: absolute;
+                    bottom: 1.5rem;
+                    right: 1.5rem;
+                    left: 1.5rem;
+                    background-color: $tertiary_scnd_bg;
+                    height: 4rem;
+                    border-radius: 1.5rem;
+
+                    input {
+                        height: 100%;
+                        width: 100%;
+                        background: none;
+                        border: none;
+                        padding: 0 1.5rem;
+                    }
+                }
+            }
+
+            .messages-container__details {
+                padding: 1.5rem;
+                max-width: 22rem;
+
+                .info-container {
+                    background-color: $secondary_ht;
+                    border-radius: 1.5rem;
+                    padding: 1.5rem;
+
+                    .info-container__top {
+                        display: flex;
+                        gap: 1.5rem;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .info-container__actions {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-bottom: 1.5rem;
+
+                        
+                    }
+
+                    .info-container__description {
+
+                        p {
+                            color: $secondary_ft;
+                            font-size: .9rem;
+                            font-weight: 300;
+                        }
+
+                        .info-container__tags {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: .5rem;
+                            margin-top: 1.5rem;
+                            
+                            p {
+                                background-color: $primary_bg;
+                                border-radius: .5rem;
+                                padding: 3px 5px;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
