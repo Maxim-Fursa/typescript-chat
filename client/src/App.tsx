@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+
 import { privateRotues, publicRoutes, RouteNames } from './router'
 import { login } from './store/authSlice'
 import { useAppDispatch, useAppSelector } from './store/hooks'

@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import { IList } from './types'
 
 interface IMessageList {
     id: number | undefined,
@@ -7,6 +7,8 @@ interface IMessageList {
 }
 
 const MessagesList: React.FC<IMessageList> = ({ id, email }) => {
+    const [list, setList] = React.useState<IList[]>([])
+    const [listActive] = React.useState<number>(1)
 
     return (
         <div className="messages-container__list">

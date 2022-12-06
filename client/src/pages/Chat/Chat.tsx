@@ -6,13 +6,12 @@ import { useNavigate } from 'react-router-dom'
 
 import { logout } from '../../store/authSlice'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { IHedeaderNav, IMenu, IList } from './types'
+import { IHedeaderNav, IMenu } from './types'
 import MessagesList from './MessagesList'
 
 const Chat: React.FC = () => {
     const [navActive] = React.useState<number>(3)
     const [menuActive] = React.useState<number>(0)
-    const [listActive] = React.useState<number>(1)
 
     const dispatch = useAppDispatch()
     const { id, email } = useAppSelector(state => state.authentication) || JSON.parse(localStorage.getItem('auth') || '{}')
@@ -32,8 +31,6 @@ const Chat: React.FC = () => {
         {name: 'Blocked'},
         {name: 'Trash'},
     ]
-    const list: IList[] = []
-
 
     return (
         <div className="chat-container">
