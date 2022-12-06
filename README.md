@@ -2,6 +2,8 @@
 
 ## Stack (at this moment)
 
+### Frontend
+
 - ReactJS
 - Vite
 - TypeScript
@@ -9,8 +11,10 @@
 - Redux Toolkit
 - Axios
 
+### Backend
+
 - NodeJS
-- ExressJS
+- ExpressJS
 - Socket.io
 - MongoDB
 
