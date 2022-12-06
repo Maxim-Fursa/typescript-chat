@@ -73,7 +73,7 @@ input {
             border-radius: 1.5rem;
         }
 
-        button {
+        & > button {
             width: 100%;
             background-color: $tertiary_bg;
             height: 4rem;
@@ -87,6 +87,24 @@ input {
 
             img {
                 height: 2.5rem;
+            }
+        }
+
+        .login-container__propose {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+
+            p {
+                color: $secondary_ft;
+            }
+
+            button {
+                background: none;
+                border: none;
+                color: $primary_ft;
+                margin-left: .4rem;
+                cursor: pointer;
             }
         }
     }

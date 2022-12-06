@@ -1,35 +1,21 @@
 import React from 'react'
-import { logout } from '../store/authSlice'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage, faCircleUser, faChartBar, faNoteSticky,  } from '@fortawesome/free-regular-svg-icons'
 import { faPhone, faVideo, faUser, faUserXmark, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 
-interface IHedeaderNav {
-    svg: React.ReactNode,
-    name: string
-}
+import { logout } from '../../store/authSlice'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { IHedeaderNav, IMenu, IList } from './types'
+import MessagesList from './MessagesList'
 
-interface IMenu {
-    name: string,
-    qty?: number
-}
-
-interface IList {
-    avatar?: string,
-    name: string,
-    email: string,
-    msg: string
-}
-
-const Chat = () => {
-    const [navActive] = React.useState(3)
-    const [menuActive] = React.useState(0)
-    const [listActive] = React.useState(1)
+const Chat: React.FC = () => {
+    const [navActive] = React.useState<number>(3)
+    const [menuActive] = React.useState<number>(0)
+    const [listActive] = React.useState<number>(1)
 
     const dispatch = useAppDispatch()
-    const email = useAppSelector(state => state.authentication.email) || JSON.parse(localStorage.getItem('auth') || '{}')?.email
+    const { id, email } = useAppSelector(state => state.authentication) || JSON.parse(localStorage.getItem('auth') || '{}')
     const navigate = useNavigate()
 
     const nav: IHedeaderNav[] = [
@@ -38,7 +24,6 @@ const Chat = () => {
         { svg: <FontAwesomeIcon icon={faChartBar} />, name: 'Statistic' },
         { svg: <FontAwesomeIcon icon={faMessage} />, name: 'Chats' }
     ] 
-
     const menu: IMenu[] = [
         {name: 'All', qty: 12},
         {name: 'Pinned', qty: 3},
@@ -47,8 +32,8 @@ const Chat = () => {
         {name: 'Blocked'},
         {name: 'Trash'},
     ]
-
     const list: IList[] = []
+
 
     return (
         <div className="chat-container">
@@ -81,20 +66,7 @@ const Chat = () => {
                     </ul>
                 </div>
                 <div className="messages-container">
-                    <div className="messages-container__list">
-                        <input type="text" placeholder="Search" />
-                        <ul>
-                            <li>
-                                <p className="avatar --no-img">MF</p>
-                                <div className="description">
-                                    <p className="description__name">Maksym Fursa</p>
-                                    <p className="description__email">{email}</p>
-                                    <p className="description__msg">Maybe on Friday?</p>
-                                </div>
-                                <p className="item-time">12:30</p>
-                            </li>
-                        </ul>
-                    </div>
+                    <MessagesList id={id} email={email} />
                     <div className="conversation-container">
                         <div className="conversation-container__top">
                             <p className="avatar conversation-container__avavar --no-img">MF</p>
