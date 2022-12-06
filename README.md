@@ -1,6 +1,6 @@
 # TypeScript Chat
 
-## Stack (at the moment)
+## Stack (at this moment)
 
 - ReactJS
 - Vite
